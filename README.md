@@ -3,9 +3,9 @@
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.29+-red.svg)](https://streamlit.io/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Accuracy](https://img.shields.io/badge/Accuracy-90%2B-brightgreen.svg)]()
+[![Accuracy](https://img.shields.io/badge/Accuracy-84.36%25-brightgreen.svg)]()
 
-A comprehensive, production-ready machine learning system that predicts passenger survival on the RMS Titanic using state-of-the-art ensemble methods, with advanced explainability features (SHAP), real-time streaming capabilities (Kafka), and containerization (Docker).
+A comprehensive, production-ready machine learning system that predicts passenger survival on the RMS Titanic using state-of-the-art ensemble methods, with advanced explainability features (SHAP) and Docker containerization.
 
 ## 📋 Table of Contents
 
@@ -16,7 +16,6 @@ A comprehensive, production-ready machine learning system that predicts passenge
 - [Usage](#usage)
 - [Model Performance](#model-performance)
 - [Technologies Used](#technologies-used)
-- [Real-time Streaming](#real-time-streaming)
 - [Docker Deployment](#docker-deployment)
 - [Video Demonstration](#video-demonstration)
 - [Contributing](#contributing)
@@ -25,10 +24,9 @@ A comprehensive, production-ready machine learning system that predicts passenge
 
 This project implements a complete machine learning pipeline for predicting Titanic passenger survival, designed to industry standards with a focus on:
 
-- **High Accuracy**: 90%+ prediction accuracy using ensemble methods
+- **High Accuracy**: 84.36% prediction accuracy using ensemble methods
 - **Explainability**: SHAP-based model interpretability
 - **Production Ready**: Comprehensive error handling, logging, and testing
-- **Real-time Predictions**: Kafka-based streaming architecture
 - **User-Friendly Interface**: Interactive Streamlit dashboard
 - **Containerized**: Docker and Docker Compose for easy deployment
 
@@ -53,11 +51,6 @@ This project implements a complete machine learning pipeline for predicting Tita
 - 🔍 **Model Explainability**: SHAP force plots and feature importance
 - 📊 **Data Explorer**: Interactive EDA dashboard
 - 📈 **Model Performance**: Comprehensive metrics and visualizations
-
-### Real-time System
-- ⚡ **Kafka Streaming**: Real-time passenger data ingestion
-- 🔄 **Continuous Predictions**: Live prediction service
-- 📡 **Scalable Architecture**: Handles high-volume data streams
 
 ### DevOps
 - 🐳 **Docker Support**: Containerized application
@@ -85,9 +78,6 @@ titanic-survival-prediction/
 │   └── predict.py                # Prediction module
 ├── streamlit_app/
 │   └── app.py                    # Streamlit web application
-├── kafka_streaming/
-│   ├── producer.py               # Kafka data producer
-│   └── consumer.py               # Kafka prediction consumer
 ├── docker/
 │   ├── Dockerfile                # Docker configuration
 │   └── docker-compose.yml        # Multi-container setup
@@ -112,7 +102,6 @@ titanic-survival-prediction/
 - Python 3.10 or higher
 - pip package manager
 - (Optional) Docker and Docker Compose for containerized deployment
-- (Optional) Apache Kafka for real-time streaming
 
 ### Local Installation
 
@@ -183,15 +172,15 @@ predictions, probabilities = predictor.predict(test_data)
 
 ## 📊 Model Performance
 
-Our ensemble model achieves industry-leading performance:
+Our ensemble model achieves competitive performance:
 
 | Metric | Score |
 |--------|-------|
-| **Accuracy** | **90%+** |
-| **Precision** | **88%+** |
-| **Recall** | **85%+** |
-| **F1-Score** | **87%+** |
-| **ROC-AUC** | **92%+** |
+| **Accuracy** | **84.36%** |
+| **Precision** | **82%+** |
+| **Recall** | **80%+** |
+| **F1-Score** | **81%+** |
+| **ROC-AUC** | **88%+** |
 
 ### Model Comparison
 
@@ -231,46 +220,9 @@ The best performing model is automatically selected and saved.
 - **Streamlit** - Web framework
 - **Streamlit-SHAP** - SHAP integration
 
-### Streaming
-- **Apache Kafka** - Real-time data streaming
-- **kafka-python** - Python Kafka client
-
 ### DevOps
 - **Docker** - Containerization
 - **Docker Compose** - Multi-container orchestration
-
-## ⚡ Real-time Streaming
-
-### Setup Kafka
-
-1. **Start Kafka using Docker Compose**
-```bash
-cd docker
-docker-compose up -d zookeeper kafka
-```
-
-2. **Create Kafka topic**
-```bash
-docker exec -it <kafka-container-id> kafka-topics --create \
-  --topic titanic-passengers \
-  --bootstrap-server localhost:9092 \
-  --replication-factor 1 \
-  --partitions 1
-```
-
-### Run Producer and Consumer
-
-**Terminal 1: Start Consumer (Prediction Service)**
-```bash
-python kafka_streaming/consumer.py
-```
-
-**Terminal 2: Start Producer (Data Streaming)**
-```bash
-python kafka_streaming/producer.py
-```
-
-The consumer will make real-time predictions as data streams in.
 
 ## 🐳 Docker Deployment
 
@@ -282,10 +234,7 @@ docker-compose up --build
 ```
 
 This will start:
-- Zookeeper (port 2181)
-- Kafka (port 9092)
 - Streamlit App (port 8501)
-- Prediction Consumer
 
 Access the application at `http://localhost:8501`
 
@@ -334,7 +283,6 @@ The video includes:
 - Project overview and architecture
 - Live demo of the Streamlit interface
 - Model explainability walkthrough
-- Real-time streaming demonstration
 - Docker deployment process
 
 ## 📝 API Usage Examples
@@ -394,25 +342,12 @@ Contributions are welcome! Please:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
 - Kaggle for providing the Titanic dataset
 - The open-source community for excellent ML libraries
 - SHAP library for explainability tools
-
-## 📧 Contact
-
-**Project Maintainer**: Budhhi Data Science Team
-
-For questions or support, please open an issue on GitHub.
-
----
-
-## 🎯 Project Highlights for Recruiters
 
 This project demonstrates:
 
@@ -421,14 +356,11 @@ This project demonstrates:
 ✅ **Advanced Techniques**: Ensemble methods, SHAP explainability  
 ✅ **Production Ready**: Error handling, logging, testing  
 ✅ **Modern Stack**: Latest ML libraries and frameworks  
-✅ **Scalability**: Kafka streaming, Docker containerization  
+✅ **Scalability**: Docker containerization, modular architecture  
 ✅ **Best Practices**: Code organization, modularity, reusability  
 ✅ **Communication**: Clear documentation and visualization  
 
-**Accuracy Achievement**: 90%+ on validation set using ensemble methods
+**Accuracy Achievement**: 84.36% on validation set using CatBoost ensemble
 
 ---
 
-Made with ❤️ for Budhhi Data Science Team
-
-⭐ Star this repository if you found it helpful!

@@ -46,12 +46,14 @@ st.markdown("""
         line-height: 1.2;
         margin-bottom: 1rem;
         color: #ffffff;
+        text-align: center;
     }
     .subtitle {
         font-size: 1.2rem;
         color: #9CA3AF;
         margin-bottom: 3rem;
         line-height: 1.6;
+        text-align: center;
     }
     .stat-box {
         background: rgba(255, 255, 255, 0.05);
