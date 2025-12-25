@@ -1,0 +1,14 @@
+
+================================================================================
+ENHANCED TITANIC SURVIVAL PREDICTION - MODEL REPORT
+================================================================================
+
+CatBoost_Optimized: 0.8268 (82.68%)
+GradientBoosting_Optimized: 0.8268 (82.68%)
+Stacking_Ensemble: 0.8268 (82.68%)
+RandomForest_Optimized: 0.8156 (81.56%)
+XGBoost_Optimized: 0.8101 (81.01%)
+Voting_Ensemble: 0.8101 (81.01%)
+LightGBM_Optimized: 0.7933 (79.33%)
+
+================================================================================
