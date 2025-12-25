@@ -5,10 +5,17 @@
 ### Option 1: Automated Setup (Recommended)
 
 ```bash
-# 1. Install dependencies and run complete pipeline
-python setup_and_run.py
+# 1. Install dependencies
+pip install -r requirements.txt
 
-# 2. Launch Streamlit app
+# 2. Run preprocessing and training
+cd src
+python data_preprocessing.py
+python feature_engineering.py
+python model_training.py
+
+# 3. Launch Streamlit app
+cd ..
 streamlit run streamlit_app/app.py
 ```
 
@@ -38,7 +45,7 @@ streamlit run streamlit_app/app.py
 After running the setup, you'll have:
 
 ✅ **Preprocessed Data** in `data/processed/`  
-✅ **Trained Models** (90%+ accuracy) in `models/`  
+✅ **Trained Models** (84%+ accuracy) in `models/`  
 ✅ **Performance Report** in `models/model_report.txt`  
 ✅ **Streamlit App** ready at `http://localhost:8501`
 
@@ -69,22 +76,6 @@ After running the setup, you'll have:
 
 ## 🔥 Advanced Features
 
-### Real-time Streaming with Kafka
-
-**Prerequisites**: Install and start Kafka
-
-```bash
-# Start Kafka services
-cd docker
-docker-compose up -d zookeeper kafka
-
-# Terminal 1: Start prediction consumer
-python kafka_streaming/consumer.py
-
-# Terminal 2: Start data producer
-python kafka_streaming/producer.py
-```
-
 ### Docker Deployment
 
 ```bash
@@ -99,10 +90,11 @@ docker-compose up --build
 
 | Model | Accuracy |
 |-------|----------|
-| Voting Ensemble | 90%+ |
-| XGBoost | 88%+ |
-| Random Forest | 87%+ |
-| LightGBM | 87%+ |
+| CatBoost | 84.36% |
+| Voting Ensemble | 83.80% |
+| Logistic Regression | 83.24% |
+| Gradient Boosting | 82.12% |
+| LightGBM | 80.45% |
 
 ## 🆘 Troubleshooting
 
@@ -124,15 +116,8 @@ python src/model_training.py
 streamlit run streamlit_app/app.py --server.port=8502
 ```
 
-### Issue: Kafka connection error
-**Solution**: Ensure Kafka is running
-```bash
-docker-compose up -d zookeeper kafka
-```
-
 ## 📝 Key Files
 
-- `setup_and_run.py` - Automated pipeline
 - `src/model_training.py` - Train models
 - `streamlit_app/app.py` - Web interface
 - `models/model_report.txt` - Performance metrics
@@ -151,9 +136,8 @@ docker-compose up -d zookeeper kafka
 2. ✅ Explore Streamlit interface
 3. ✅ Review model performance
 4. ✅ Understand SHAP explanations
-5. ✅ Try batch predictions with filters
-6. ✅ (Advanced) Setup Kafka streaming
-7. ✅ (Advanced) Deploy with Docker
+5. ✅ Try individual predictions
+6. ✅ (Advanced) Deploy with Docker
 
 ## 📞 Need Help?
 
@@ -164,7 +148,7 @@ docker-compose up -d zookeeper kafka
 ---
 
 **Time to first prediction**: < 5 minutes  
-**Accuracy achieved**: 90%+  
+**Accuracy achieved**: 84.36%  
 **Production ready**: ✅
 
 Happy Predicting! 🚢
